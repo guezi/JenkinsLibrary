@@ -10,31 +10,42 @@ pipeline {
         
         stage ('Git Checkout') {
   steps {
-      git branch: 'master', credentialsId: 'jenkins', url: 'https://github.com/guezi/JenkinsLibrary'
+      git branch: 'master', credentialsId: 'Jenkins', url: 'https://github.com/guezi/JenkinsLibrary'
     }
   }
-        stage('Hello new') {
-            steps {
-                echo 'Hello World'
-                echo "$GIT_BRANCH"
-                powershell 'Write-Output "Hello World"'
-               
-            }
-        }
+        stage('Restore packages') {
+                   steps {
+                           dotnetRestore project: 'JenkinsLibrary.sln'
+                         }
+                   }
+        stage('Clean') {
+                      steps {
+                        dotnetClean configuration: 'Release', project: 'JenkinsLibrary.sln'
+                      }
+                    }
+
            stage('Build') {
-            steps {
-                
-               dotnetBuild configuration: 'Release', project: 'JenkinsLibrary.sln'
-               
-            }
+                    steps {
+                       
+                       dotnetBuild configuration: 'Release', project: 'JenkinsLibrary.sln' 
+                      
+                    }
         }
-         stage('Deploy') {
-            steps {               
-                
-               dotnetTest configuration: 'Release', project: 'JenkinsLibrary.sln', resultsDirectory: 'test'
-            }
+            stage('test') {
+                    steps {
+                       
+                       
+                       dotnetTest configuration: 'Release', project: 'JenkinsLibrary.sln'  
+                    }
         }
         
-       
+         stage('Push') {
+                    steps {
+                       
+                      dotnetPublish configuration: 'Release', project: 'JenkinsLibrary.sln', selfContained: false
+                      dotnetPublish configuration: 'Release', outputDirectory: 'publish', project: 'JenkinsLibrary.sln', runtime: 'win-x64', selfContained: true, versionSuffix: '1.2.3'
+                    }
+        }
+        
     }
 }
