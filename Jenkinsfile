@@ -20,7 +20,7 @@ pipeline {
          stage('Deploy') {
             steps {               
                 
-               dotnetPublish project: 'JenkinsLibrary\\JenkinsLibrary.csproj', selfContained: false, workDirectory: 'deploy'
+               dotnetPublish project: '~/JenkinsLibrary/JenkinsLibrary.csproj', selfContained: false, workDirectory: 'deploy'
             }
         }
     }
