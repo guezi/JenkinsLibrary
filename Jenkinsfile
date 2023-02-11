@@ -13,7 +13,7 @@ pipeline {
            stage('Docker') {
             steps {
                 
-                powershell 'Docker images -a'
+               dotnetBuild configuration: 'Release', project: 'JenkinsLibrary.sln'
                
             }
         }
