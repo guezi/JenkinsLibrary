@@ -18,9 +18,8 @@ pipeline {
             }
         }
          stage('Deploy') {
-            steps {
+            steps {               
                 
-                mkdir deploy
                dotnetPublish project: 'JenkinsLibrary.sln', selfContained: false, workDirectory: 'deploy'
             }
         }
