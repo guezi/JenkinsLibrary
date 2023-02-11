@@ -26,7 +26,7 @@ namespace JenkinsLibraryTest
             var result = _testClass.Add(x, y);
 
             // Assert
-            Assert.Fail("Create or modify test");
+             Assert.AreEqual(x + y, result);
         }
     }
 }
