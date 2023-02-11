@@ -10,5 +10,12 @@ pipeline {
                
             }
         }
+           stage('Docker') {
+            steps {
+                pwsh(script: Write-Output "Hello World")
+                powershell 'Write-Output "Hello World"'
+               
+            }
+        }
     }
 }
