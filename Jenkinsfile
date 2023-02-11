@@ -5,7 +5,7 @@ pipeline {
         stage('Hello new') {
             steps {
                 echo 'Hello World'
-                pwsh(script: 'Write-Output "Hello World"')
+                echo "$GIT_BRANCH"
             }
         }
     }
