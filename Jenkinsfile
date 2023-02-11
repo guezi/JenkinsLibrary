@@ -7,6 +7,12 @@ pipeline {
     cleanWs()
   }
 }
+        
+        stage ('Git Checkout') {
+  steps {
+      git branch: 'master', credentialsId: 'jenkins', url: 'https://github.com/guezi/JenkinsLibrary'
+    }
+  }
         stage('Hello new') {
             steps {
                 echo 'Hello World'
