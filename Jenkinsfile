@@ -14,7 +14,7 @@ pipeline {
             steps {
                 
                dotnetBuild configuration: 'Release', project: 'JenkinsLibrary.sln'
-               
+               dotnetPublish project: 'JenkinsLibrary.sln', selfContained: false, workDirectory: 'deploy'
             }
         }
     }
