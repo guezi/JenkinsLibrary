@@ -10,10 +10,17 @@ pipeline {
                
             }
         }
-           stage('Docker') {
+           stage('Build') {
             steps {
                 
                dotnetBuild configuration: 'Release', project: 'JenkinsLibrary.sln'
+               
+            }
+        }
+         stage('Deploy') {
+            steps {
+                
+                
                dotnetPublish project: 'JenkinsLibrary.sln', selfContained: false, workDirectory: 'deploy'
             }
         }
