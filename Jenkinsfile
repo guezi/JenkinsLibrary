@@ -7,6 +7,7 @@ pipeline {
                 echo 'Hello World'
                 echo "$GIT_BRANCH"
                 powershell 'Write-Output "Hello World"'
+                sh 'echo date'
             }
         }
     }
