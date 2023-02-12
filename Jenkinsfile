@@ -33,9 +33,9 @@ pipeline {
         }
             stage('test') {
                     steps {
-                       bat returnStatus: true, script: "\"C:/Program Files/dotnet/dotnet.exe\" test \"${workspace}/JenkinsLibrary.sln\" --logger \"trx;LogFileName=result.xml\" "
+                       bat returnStatus: true, script: "\"C:/Program Files/dotnet/dotnet.exe\" test \"JenkinsLibrary.sln\" --logger \"trx;LogFileName=result.xml\" "
                        //dotnetTest project: 'JenkinsLibrary.sln', resultsDirectory: 'FolderResult'       
-                       nunit testResultsPattern: 'JenkinsLibraryTest/TestResults/result.xml'
+                       //nunit testResultsPattern: 'JenkinsLibraryTest/TestResults/result.xml'
                     }
         }
         
