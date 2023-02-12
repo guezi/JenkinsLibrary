@@ -34,7 +34,7 @@ pipeline {
             stage('test') {
                     steps {
                        
-                       dotnetTest configuration: 'Release', outputDirectory: 'TestOut', project: 'JenkinsLibrary.sln', resultsDirectory: 'TestRest', showSdkInfo: true --logger "trx;LogFileName=UnitTests.trx"
+                       dotnetTest configuration: 'Release', outputDirectory: 'TestOut', project: 'JenkinsLibrary.sln', resultsDirectory: 'TestRest', showSdkInfo: true --logger 'trx;LogFileName=UnitTests.trx'         
                        
                     }
         }
