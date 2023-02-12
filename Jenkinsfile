@@ -34,7 +34,7 @@ pipeline {
             stage('test') {
                     steps {
                        
-                       
+                       dotnetTest configuration: 'Release', outputDirectory: 'TestOut', project: 'jenkind.sln', resultsDirectory: 'TestRest', showSdkInfo: true
                        dotnetTest configuration: 'Release', project: 'JenkinsLibrary.sln'  
                     }
         }
