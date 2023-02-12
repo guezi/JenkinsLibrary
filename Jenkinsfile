@@ -34,13 +34,11 @@ pipeline {
             stage('test') {
                     steps {
                        
-                       dotnetTest configuration: 'Release', outputDirectory: 'TestOut', project: 'JenkinsLibrary.sln', resultsDirectory: 'TestRest', showSdkInfo: true        
-                       
+                       dotnetTest project: 'JenkinsLibrary.sln', resultsDirectory: 'FolderResult'       
+                       nunit testResultsPattern: 'result.xml'
                     }
         }
-         stage("Publish NUnit Test Report") {
-        nunit testResultsPattern: 'TestResult.xml'
-    }
+        
          stage('Push') {
                     steps {
                        
