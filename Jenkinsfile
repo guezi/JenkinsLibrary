@@ -33,7 +33,7 @@ pipeline {
         }
             stage('test') {
                     steps {
-                       dotnet test 'JenkinsLibrary.sln' --logger "html;logfilename=testResults.html"
+                       dotnet.exe test 'JenkinsLibrary.sln' --logger "html;logfilename=testResults.html"
                        dotnetTest project: 'JenkinsLibrary.sln', resultsDirectory: 'FolderResult'       
                        nunit testResultsPattern: 'result.xml'
                     }
